@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import type { AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
+import { redirect } from 'next/navigation';
 
 import type { Response } from '@/_types/authentication';
 
@@ -43,10 +44,7 @@ const tokenRefresh = async () => {
     throw new Error('There is no storedRefreshToken');
   }
 
-  const response = await axiosInstance.post<Response>(
-    '/auth/tokens',
-    null,
-  );
+  const response = await axiosInstance.post<Response>('/auth/tokens', null);
 
   const { accessToken, refreshToken: newRefreshToken } = response.data;
 
@@ -70,6 +68,7 @@ axiosInstance.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return await axiosInstance(originalRequest);
       } catch (refreshError) {
+        window.location.href = '/login';
         return Promise.reject(refreshError);
       }
     }

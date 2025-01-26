@@ -8,7 +8,7 @@ export const getUserProfile = async (): Promise<GetUserType> => {
 };
 
 export const patchUserProfile = async (data: Partial<GetUserType>): Promise<GetUserType> => {
-  const response = await axiosInstance.patch<GetUserType>('/users/me', data );
+  const response = await axiosInstance.patch<GetUserType>('/users/me', data);
   return response.data;
 };
 
