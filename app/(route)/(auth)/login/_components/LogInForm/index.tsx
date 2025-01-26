@@ -59,6 +59,7 @@ function LoginForm() {
   const {
     handleSubmit,
     register,
+    setValue,
     formState: { isSubmitting, errors, isValid },
   } = useForm<LoginFormValues>({
     mode: 'onSubmit',
@@ -93,6 +94,19 @@ function LoginForm() {
     openModal();
   });
 
+  const testAccountLogin = async () => {
+    const email = process.env.NEXT_PUBLIC_EMAIL;
+    const password = process.env.NEXT_PUBLIC_PASSWORD;
+
+    if (!email || !password) {
+      throw new Error('Environment variables for test account are not defined');
+    }
+
+    setValue('email', email);
+    setValue('password', password);
+    await handleForm();
+  };
+
   const renderInput = (
     id: keyof LoginFormValues,
     label: string,
@@ -118,9 +132,14 @@ function LoginForm() {
     <>
       <form noValidate onSubmit={handleForm} className="grid w-full gap-7 px-3 md:px-0">
         {inputFields.map((field) => renderInput(field.id, field.label, field.type, field.placeholder, field.validation, errors[field.id]))}
-        <Button className="py-[14px]" type="submit" disabled={isSubmitting || !isValid} variant="black">
-          로그인
-        </Button>
+        <div className="grid gap-3">
+          <Button className="py-[14px]" variant="black" onClick={testAccountLogin}>
+            테스트 계정 로그인
+          </Button>
+          <Button className="py-[14px]" type="submit" disabled={isSubmitting || !isValid} variant="black">
+            로그인
+          </Button>
+        </div>
       </form>
 
       <Modal isOpen={isOpen} onClose={closeModal}>

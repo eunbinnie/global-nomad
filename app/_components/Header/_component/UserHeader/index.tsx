@@ -19,7 +19,7 @@ export default function UserHeader() {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const userData = sessionStorage.getItem('user');
+    const userData = localStorage.getItem('user');
     if (userData) {
       const parsedUser = JSON.parse(userData);
       setUserNickname(parsedUser?.user.nickname || 'error');
