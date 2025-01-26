@@ -9,7 +9,6 @@ import IconManageMyActivity from 'public/assets/icons/profile-card/manage-my-act
 import IconMyInfo from 'public/assets/icons/profile-card/my-info';
 import IconReservationHistory from 'public/assets/icons/profile-card/reservation-history';
 import IconReservationStatus from 'public/assets/icons/profile-card/reservation-status';
-import { useStore } from 'zustand';
 import type { UseMutationOptions } from '@tanstack/react-query';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 

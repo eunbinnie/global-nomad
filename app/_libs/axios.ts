@@ -2,7 +2,6 @@
 /* eslint-disable no-param-reassign */
 import type { AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
-import { redirect } from 'next/navigation';
 
 import type { Response } from '@/_types/authentication';
 
