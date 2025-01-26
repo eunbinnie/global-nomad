@@ -56,8 +56,8 @@ export default function ExperienceClientPage({ activityId }: ExperienceClientPag
   }, [activityId]);
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem('user');
-    const isLoggedIn = sessionStorage.getItem('isLogIn');
+    const storedUser = localStorage.getItem('user');
+    const isLoggedIn = localStorage.getItem('isLogIn');
 
     if (storedUser && isLoggedIn) {
       const parsedUser = JSON.parse(storedUser);

@@ -9,21 +9,23 @@ interface UserState {
   user: Response | null;
 }
 
+const isLoginStorage = Boolean(localStorage.getItem('isLogIn'));
+
 const useUserStore = create<UserState>((set) => ({
-  isLogIn: false,
+  isLogIn: isLoginStorage,
   logout: () => {
     set({ isLogIn: false, user: null });
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('isLogIn');
+    localStorage.removeItem('user');
+    localStorage.removeItem('isLogIn');
   },
   setLoginStatus: (status, response) => {
     set({ isLogIn: status, user: response || null });
     if (status && response) {
-      sessionStorage.setItem('user', JSON.stringify(response));
-      sessionStorage.setItem('isLogIn', 'true');
+      localStorage.setItem('user', JSON.stringify(response));
+      localStorage.setItem('isLogIn', 'true');
     } else {
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('isLogIn');
+      localStorage.removeItem('user');
+      localStorage.removeItem('isLogIn');
     }
   },
   user: null,

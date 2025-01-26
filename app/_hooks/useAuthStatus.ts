@@ -8,7 +8,7 @@ import type { Response } from '@/_types/authentication';
  * useAuthStatus
  *
  * 사용자의 로그인 상태와 사용자 ID를 반환하는 커스텀 훅입니다.
- * `sessionStorage`에서 'user'와 'isLoggedIn' 항목을 확인하여 로그인 여부를 판단하고,
+ * `localStorage`에서 'user'와 'isLoggedIn' 항목을 확인하여 로그인 여부를 판단하고,
  * 사용자 정보가 있을 경우 사용자 ID를 상태로 관리합니다.
  *
  * @returns {boolean} isLogin - 사용자의 로그인 여부를 나타내는 값입니다.
@@ -19,8 +19,8 @@ function useAuthStatus() {
   const [userId, setUserId] = useState<number | null>(null);
 
   useEffect(() => {
-    const user = sessionStorage.getItem('user');
-    const isLoggedIn = sessionStorage.getItem('isLogIn');
+    const user = localStorage.getItem('user');
+    const isLoggedIn = localStorage.getItem('isLogIn');
 
     if (user) {
       const userData: Response = JSON.parse(user);

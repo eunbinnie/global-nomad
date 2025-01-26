@@ -8,7 +8,7 @@ import { useMutation } from '@tanstack/react-query';
 
 import type { Activity, ErrorResponseMessage } from '@/_types/activities/form.types';
 
-import useAuthStatus from '@/_hooks/useAuthStatus';
+import useUserStore from '@/_stores/useUserStore';
 import useModalState from '@/_hooks/useModalState';
 
 import CommonModal from '../../../_components/CommonModal';
@@ -20,7 +20,7 @@ import ActivityForm from '../ActivityRegisterForm';
 function RegisterLayout() {
   const router = useRouter();
   const { modalState, setModalState, activeCloseModal } = useModalState();
-  const { isLogin } = useAuthStatus();
+  const { isLogIn } = useUserStore();
 
   const activityMutation = useMutation({
     mutationFn: postActivity,
@@ -66,7 +66,7 @@ function RegisterLayout() {
   };
 
   useEffect(() => {
-    if (isLogin === false) {
+    if (isLogIn === false) {
       setModalState((prev) => ({
         ...prev,
         isOpen: true,
@@ -76,7 +76,7 @@ function RegisterLayout() {
         },
       }));
     }
-  }, [isLogin, router, setModalState]);
+  }, [isLogIn, router, setModalState]);
 
   return (
     <>
