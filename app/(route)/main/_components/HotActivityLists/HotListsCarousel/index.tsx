@@ -63,10 +63,10 @@ export default function HotListsCarousel() {
             >
               <div className="h-full transform rounded-3xl transition-transform duration-300 hover:translate-y-[-10px] group-hover:shadow-lg group-hover:shadow-gray-400">
                 <div
-                  className="absolute bottom-0 h-3/5 w-[186px] rounded-[24px] mobile:w-[368px]"
-                  style={{ background: 'linear-gradient(to top, rgb(30,30,30), transparent)' }}
+                  className="absolute bottom-0 z-[1] h-3/5 w-[186px] rounded-[24px] mobile:w-[368px]"
+                  style={{ background: 'linear-gradient(to top, rgba(30,30,30,0.8), transparent)' }}
                 />
-                <div className="absolute bottom-7 left-10 z-[1] flex flex-col gap-0 text-white mobile:gap-5">
+                <div className="absolute bottom-6 left-6 z-[1] flex flex-col gap-0 text-white mobile:gap-5">
                   <Rating rating={activity.rating} reviewCount={activity.reviewCount} ratingTarget="hot" />
                   <div className="mr-[20px] max-h-[80px] break-keep text-lg mobile:max-h-[130px] mobile:text-[28px] mobile:leading-[42px]">
                     {activity.title}
