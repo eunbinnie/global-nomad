@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import type { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { postActivity } from '@/_apis/activities/activityForm';
@@ -8,7 +7,6 @@ import { useMutation } from '@tanstack/react-query';
 
 import type { Activity, ErrorResponseMessage } from '@/_types/activities/form.types';
 
-import useUserStore from '@/_stores/useUserStore';
 import useModalState from '@/_hooks/useModalState';
 
 import CommonModal from '../../../_components/CommonModal';
@@ -20,7 +18,6 @@ import ActivityForm from '../ActivityRegisterForm';
 function RegisterLayout() {
   const router = useRouter();
   const { modalState, setModalState, activeCloseModal } = useModalState();
-  const { isLogIn } = useUserStore();
 
   const activityMutation = useMutation({
     mutationFn: postActivity,
@@ -64,19 +61,6 @@ function RegisterLayout() {
   const onSubmitForm = (formData: Activity) => {
     activityMutation.mutate(formData);
   };
-
-  useEffect(() => {
-    if (isLogIn === false) {
-      setModalState((prev) => ({
-        ...prev,
-        isOpen: true,
-        message: '로그인이 필요한 서비스입니다.',
-        onClose: () => {
-          router.push('/login');
-        },
-      }));
-    }
-  }, [isLogIn, router, setModalState]);
 
   return (
     <>
