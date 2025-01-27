@@ -39,7 +39,7 @@ export default function Reviews({ averageRating, totalReviews, getSatisfactionLa
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch(`https://sp-globalnomad-api.vercel.app/6-9/activities/${activityId}/reviews?page=${currentPage}&limit=${reviewsPerPage}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/activities/${activityId}/reviews?page=${currentPage}&limit=${reviewsPerPage}`);
 
         const data: ApiResponse = await response.json();
 
@@ -128,14 +128,16 @@ export default function Reviews({ averageRating, totalReviews, getSatisfactionLa
           <p className="text-center">리뷰가 없습니다.</p>
         )}
       </div>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        pageNumbers={pageNumbers}
-        goToNextSet={goToNextSet}
-        goToPage={handlePageChange}
-        goToPreviousSet={goToPreviousSet}
-      />
+      {reviews.length > 0 && (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          pageNumbers={pageNumbers}
+          goToNextSet={goToNextSet}
+          goToPage={handlePageChange}
+          goToPreviousSet={goToPreviousSet}
+        />
+      )}
     </section>
   );
 }
