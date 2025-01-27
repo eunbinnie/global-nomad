@@ -9,10 +9,8 @@ interface UserState {
   user: Response | null;
 }
 
-const isLoginStorage = Boolean(localStorage.getItem('isLogIn'));
-
 const useUserStore = create<UserState>((set) => ({
-  isLogIn: isLoginStorage,
+  isLogIn: false,
   logout: () => {
     set({ isLogIn: false, user: null });
     localStorage.removeItem('user');
