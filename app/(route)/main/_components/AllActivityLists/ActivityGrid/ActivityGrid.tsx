@@ -48,14 +48,15 @@ export default function ActivityGrid({ activities, isLoading, isError, onClick }
               src={activity.bannerImageUrl}
               alt={activity.title}
               fill
-              sizes="w-full"
+              priority
+              sizes="max-width:100%"
               style={{ objectFit: 'cover' }}
               className="transition-transform duration-300 ease-in-out hover:scale-110"
             />
           </div>
           <div className="text-balance">
             <Rating rating={activity.rating} reviewCount={activity.reviewCount} ratingTarget="all" />
-            <div className="my-[10px] break-keep text-lg font-semibold mobile:text-xl">{activity.title}</div>
+            <div className="break-keep text-lg font-semibold mobile:text-xl">{activity.title}</div>
             <div className="text-2lg font-bold mobile:text-xl">
               ₩ {activity.price.toLocaleString()}
               <span className="text-md font-regular text-gray-700 mobile:text-2lg"> /인</span>
