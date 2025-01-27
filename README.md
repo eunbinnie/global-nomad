@@ -1,6 +1,6 @@
 # 🌍 GlobalNomad
 ![1](https://github.com/user-attachments/assets/682546c1-d6b3-4e85-940d-bfa2f8c1431c)
-- 배포 URL : https://sp-globalnomad-6-9.vercel.app/
+- 배포 URL : https://global-nomad-ruddy.vercel.app/
 - Test ID : eunbin@eunbin.com
 - Test PW : 12345678
 <br />
