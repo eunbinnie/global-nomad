@@ -70,29 +70,26 @@ function LoginForm() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const testAccountRef = useRef(false);
   const setLoginStatus = useUserStore((state) => state.setLoginStatus);
-  let messageInModal: string;
 
   const handleForm = handleSubmit(async (data: LoginFormValues) => {
     try {
-      messageInModal = '로그인이 완료되었습니다.';
       const result = await postLogin(data);
       if (result) {
         const token = getCookie('accessToken');
         setAccessToken(token);
         setLoginStatus(true, result);
-        setModalMessage(messageInModal);
+
         setTimeout(() => {
-          router.push(testAccountRef.current ? '/activity/register' : '/');
-        }, 1500);
+          if (token) {
+            router.push(testAccountRef.current ? '/activity/register' : '/');
+          }
+        }, 100);
       }
     } catch (error) {
-      messageInModal = '로그인 중 오류가 발생했습니다.';
-      if (error instanceof Error) {
-        messageInModal = error.message;
-      }
-      setModalMessage(messageInModal);
+      const errorMessage = error instanceof Error ? error.message : '로그인 중 오류가 발생했습니다.';
+      setModalMessage(errorMessage);
+      openModal();
     }
-    openModal();
   });
 
   const testAccountLogin = async () => {
@@ -125,7 +122,7 @@ function LoginForm() {
 
   const handleModalClose = () => {
     if (accessToken) {
-      router.replace(testAccountRef ? '/activity/register' : '/');
+      router.replace(testAccountRef.current ? '/activity/register' : '/');
     }
     closeModal();
   };
