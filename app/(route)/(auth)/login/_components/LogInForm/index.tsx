@@ -83,7 +83,7 @@ function LoginForm() {
           if (token) {
             router.push(testAccountRef.current ? '/activity/register' : '/');
           }
-        }, 100);
+        }, 1000);
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : '로그인 중 오류가 발생했습니다.';
@@ -122,7 +122,7 @@ function LoginForm() {
 
   const handleModalClose = () => {
     if (accessToken) {
-      router.replace(testAccountRef.current ? '/activity/register' : '/');
+      router.push(testAccountRef.current ? '/activity/register' : '/');
     }
     closeModal();
   };
