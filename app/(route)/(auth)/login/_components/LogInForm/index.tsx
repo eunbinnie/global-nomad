@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { FieldError, RegisterOptions } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
@@ -68,21 +68,20 @@ function LoginForm() {
   const { isOpen, openModal, closeModal } = useModal();
   const [modalMessage, setModalMessage] = useState<string>('');
   const [accessToken, setAccessToken] = useState<string | null>(null);
+  const testAccountRef = useRef(false);
   const setLoginStatus = useUserStore((state) => state.setLoginStatus);
   let messageInModal: string;
 
   const handleForm = handleSubmit(async (data: LoginFormValues) => {
     try {
-      messageInModal = '로그인이 완료되었습니다.';
       const result = await postLogin(data);
       if (result) {
         const token = getCookie('accessToken');
         setAccessToken(token);
         setLoginStatus(true, result);
-        setModalMessage(messageInModal);
         setTimeout(() => {
-          router.push('/');
-        }, 1500);
+          router.push(testAccountRef.current ? '/activity/register' : '/');
+        }, 100);
       }
     } catch (error) {
       messageInModal = '로그인 중 오류가 발생했습니다.';
@@ -90,11 +89,12 @@ function LoginForm() {
         messageInModal = error.message;
       }
       setModalMessage(messageInModal);
+      openModal();
     }
-    openModal();
   });
 
   const testAccountLogin = async () => {
+    testAccountRef.current = true;
     const email = process.env.NEXT_PUBLIC_EMAIL;
     const password = process.env.NEXT_PUBLIC_PASSWORD;
 
@@ -123,7 +123,7 @@ function LoginForm() {
 
   const handleModalClose = () => {
     if (accessToken) {
-      router.replace('/');
+      router.replace(testAccountRef ? '/activity/register' : '/');
     }
     closeModal();
   };
