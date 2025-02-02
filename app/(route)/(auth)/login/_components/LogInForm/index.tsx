@@ -74,14 +74,16 @@ function LoginForm() {
 
   const handleForm = handleSubmit(async (data: LoginFormValues) => {
     try {
+      messageInModal = '로그인이 완료되었습니다.';
       const result = await postLogin(data);
       if (result) {
         const token = getCookie('accessToken');
         setAccessToken(token);
         setLoginStatus(true, result);
+        setModalMessage(messageInModal);
         setTimeout(() => {
           router.push(testAccountRef.current ? '/activity/register' : '/');
-        }, 100);
+        }, 1500);
       }
     } catch (error) {
       messageInModal = '로그인 중 오류가 발생했습니다.';
@@ -89,8 +91,8 @@ function LoginForm() {
         messageInModal = error.message;
       }
       setModalMessage(messageInModal);
-      openModal();
     }
+    openModal();
   });
 
   const testAccountLogin = async () => {
