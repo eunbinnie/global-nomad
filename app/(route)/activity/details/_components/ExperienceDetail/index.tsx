@@ -191,14 +191,15 @@ export default function ExperienceDetail({ experience, totalReviews, averageRati
 
           <div className="relative">
             {/* 본인이 만든 체험인 경우 예약 카드가 보이지 않도록 처리 */}
+            {/* mobile */}
             {experience.userId !== currentUserId && (
-              <div className="fixed inset-x-0 bottom-20 z-[999] flex justify-center mobile:hidden">
+              <div className="fixed inset-x-0 bottom-0 z-[999] flex justify-center mobile:hidden">
                 <div className="w-full bg-white shadow-md">
                   <Calendar activityId={experience.id} />
                 </div>
               </div>
             )}
-
+            {/* pc */}
             {experience.userId !== currentUserId && (
               <div className="hidden w-full pr-[24px] mobile:block tablet:pr-0">
                 <div className="w-full rounded-lg bg-white shadow-md">

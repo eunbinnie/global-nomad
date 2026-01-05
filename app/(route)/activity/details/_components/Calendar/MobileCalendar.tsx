@@ -125,29 +125,33 @@ export default function MobileCalendar({
             <div className="w-full">
               <div className="mb-4 flex items-center justify-between">
                 <div className="text-[28px] font-bold">날짜</div>
-                <Image src={CalArrow} className="cursor-pointer" alt="닫기" width={40} height={40} onClick={() => setIsCalendarOpen(false)} />
+                <div className="relative aspect-square size-6">
+                  <Image src={CalArrow} className="cursor-pointer" alt="닫기" fill onClick={() => setIsCalendarOpen(false)} />
+                </div>
               </div>
               <div className="rounded-[8px] border border-gray-100 px-[27px] py-[5px]">
                 <div className="mb-2 flex justify-between py-[5px]">
-                  <Image
-                    src={CalPrev}
-                    alt="이전 달로 이동"
-                    width={16}
-                    height={16}
-                    className="cursor-pointer"
-                    onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}
-                  />
+                  <div className="relative aspect-[8/11] h-[22px] w-4">
+                    <Image
+                      src={CalPrev}
+                      alt="이전 달로 이동"
+                      fill
+                      className="cursor-pointer"
+                      onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}
+                    />
+                  </div>
                   <span className="text-sm font-bold text-black">
                     {months[currentDate.getMonth()]} {currentDate.getFullYear()}
                   </span>
-                  <Image
-                    src={CalNext}
-                    alt="다음 달로 이동"
-                    width={16}
-                    height={16}
-                    className="cursor-pointer"
-                    onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}
-                  />
+                  <div className="relative aspect-[8/11] h-[22px] w-4">
+                    <Image
+                      src={CalNext}
+                      alt="다음 달로 이동"
+                      fill
+                      className="cursor-pointer"
+                      onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-7 gap-px">
