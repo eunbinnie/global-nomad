@@ -35,11 +35,11 @@ export default function SearchBox({ onSearch }: HotActivitySearchProps) {
           <input
             type="text"
             placeholder="내가 원하는 체험은"
-            className="w-full rounded-[4px] border border-nomad-black py-[15px] pl-[48px] pr-[35px] text-md font-regular outline-none placeholder:text-gray-500 mobile:text-lg"
+            className="w-full rounded-lg border border-nomad-black py-[15px] pl-[48px] pr-[35px] text-md font-regular outline-none placeholder:text-gray-500 mobile:text-lg"
             onChange={handleInputChange}
           />
           <Image src={Bed} alt="bed" width={48} height={48} className="absolute" />
-          <button type="submit" className="h-full w-[96px] rounded-[4px] bg-nomad-black text-white mobile:min-w-[136px]">
+          <button type="submit" className="h-full w-[96px] rounded-lg bg-nomad-black text-white mobile:min-w-[136px]">
             검색
           </button>
         </form>

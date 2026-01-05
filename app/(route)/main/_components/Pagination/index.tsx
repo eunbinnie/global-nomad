@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 
+import { cn } from '@/_utils/classNames';
+
 import Button from '../Button';
 
 import ArrowRight from 'public/assets/icons/arrow-right.svg';
@@ -37,9 +39,13 @@ export default function Pagination({ totalPages, currentPage, pageNumbers, goToN
         border
         btnColor="white"
         borderColor={canGoToPreviousSet ? 'nomadBlack' : 'gray'}
-        className="flex size-[40px] items-center justify-center rounded-[15px] text-2lg font-bold mobile:size-[55px]"
+        className="flex size-8 items-center justify-center rounded-lg text-2lg font-bold mobile:size-10"
       >
-        <Image src={canGoToPreviousSet ? ArrowRight : ArrowRightDisabled} alt="페이지네이션 버튼" className={canGoToPreviousSet ? 'rotate-180' : ''} />
+        <Image
+          src={canGoToPreviousSet ? ArrowRight : ArrowRightDisabled}
+          alt="페이지네이션 버튼"
+          className={cn('size-4 mobile:size-5', canGoToPreviousSet ? 'rotate-180' : '')}
+        />
       </Button>
       {pageNumbers.map((pageNumber) => {
         const isActivePage = currentPage === pageNumber;
@@ -51,7 +57,7 @@ export default function Pagination({ totalPages, currentPage, pageNumbers, goToN
             border={!isActivePage}
             borderColor={isActivePage ? undefined : 'nomadBlack'}
             onClick={() => goToPage(pageNumber)}
-            className="size-[40px] rounded-[15px] text-2lg font-regular mobile:size-[55px]"
+            className="size-8 rounded-lg text-md font-regular mobile:size-10 mobile:text-base"
           >
             {pageNumber}
           </Button>
@@ -64,9 +70,13 @@ export default function Pagination({ totalPages, currentPage, pageNumbers, goToN
         btnColor="white"
         border
         borderColor={canGoToNextSet ? 'nomadBlack' : 'gray'}
-        className="flex size-[40px] items-center justify-center rounded-[15px] text-2lg font-bold mobile:size-[55px]"
+        className="flex size-8 items-center justify-center rounded-lg text-2lg font-bold mobile:size-10"
       >
-        <Image src={canGoToNextSet ? ArrowRight : ArrowRightDisabled} alt="페이지네이션 버튼" className={canGoToNextSet ? '' : 'rotate-180'} />
+        <Image
+          src={canGoToNextSet ? ArrowRight : ArrowRightDisabled}
+          alt="페이지네이션 버튼"
+          className={cn('size-4 mobile:size-5', canGoToNextSet ? '' : 'rotate-180')}
+        />
       </Button>
     </div>
   );
