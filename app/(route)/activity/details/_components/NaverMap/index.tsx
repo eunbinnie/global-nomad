@@ -37,8 +37,42 @@ export default function NaverMap({ latitude, longitude }: NaverMapProps) {
   const [mapLoadError, setMapLoadError] = useState<string | null>(null);
 
   useEffect(() => {
+    const initializeMap = () => {
+      const { maps } = window.naver;
+
+      if (maps) {
+        const latLng = new maps.LatLng(latitude, longitude);
+
+        const mapOptions: MapOptions = {
+          center: latLng,
+          zoom: 15,
+        };
+        const map = new maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
+
+        const markerOptions: MarkerOptions = {
+          position: latLng,
+          map,
+        };
+        // eslint-disable-next-line no-new
+        new maps.Marker(markerOptions);
+
+        const mapContainer = document.getElementById('map');
+        if (mapContainer) {
+          mapContainer.style.zIndex = '0';
+        }
+      } else {
+        setMapLoadError('Naver Maps API가 로드되지 않았습니다.');
+      }
+    };
+
     const loadMap = () => {
-      if (document.getElementById('naver-map-script')) return;
+      // 스크립트가 이미 로드되어 있고 window.naver.maps가 존재하면 바로 지도 초기화
+      if (document.getElementById('naver-map-script')) {
+        if (window.naver?.maps) {
+          initializeMap();
+        }
+        return;
+      }
 
       const script = document.createElement('script');
       script.id = 'naver-map-script';
@@ -47,31 +81,7 @@ export default function NaverMap({ latitude, longitude }: NaverMapProps) {
       document.head.appendChild(script);
 
       script.onload = () => {
-        const { maps } = window.naver;
-
-        if (maps) {
-          const latLng = new maps.LatLng(latitude, longitude);
-
-          const mapOptions: MapOptions = {
-            center: latLng,
-            zoom: 15,
-          };
-          const map = new maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
-
-          const markerOptions: MarkerOptions = {
-            position: latLng,
-            map,
-          };
-          // eslint-disable-next-line no-new
-          new maps.Marker(markerOptions);
-
-          const mapContainer = document.getElementById('map');
-          if (mapContainer) {
-            mapContainer.style.zIndex = '0';
-          }
-        } else {
-          setMapLoadError('Naver Maps API가 로드되지 않았습니다.');
-        }
+        initializeMap();
       };
 
       script.onerror = () => {

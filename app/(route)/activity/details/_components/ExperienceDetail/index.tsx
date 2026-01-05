@@ -179,7 +179,11 @@ export default function ExperienceDetail({ experience, totalReviews, averageRati
             </section>
 
             <section className="mb-[24px] border-t px-[24px] pt-[40px] tablet:px-0" style={{ borderColor: 'rgba(17, 34, 17, 0.25)', borderTopWidth: '1px' }}>
-              {coordinates ? <NaverMap latitude={coordinates.latitude} longitude={coordinates.longitude} /> : <p>지도를 불러오는 중입니다...</p>}
+              {coordinates ? (
+                <NaverMap latitude={coordinates.latitude} longitude={coordinates.longitude} />
+              ) : (
+                <div className="h-[400px] w-full animate-pulse rounded-2xl bg-gray-150" />
+              )}
               <div className="mt-2 flex items-center gap-2">
                 <Image src={Location} alt="Location" width={16} height={16} />
                 <span className="text-md text-nomad-black">{experience.address}</span>
