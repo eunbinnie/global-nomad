@@ -19,9 +19,9 @@ export default function Dropdown({ onEdit, onDelete }: DropdownProps) {
 
   return (
     <div className="relative">
-      <div onClick={toggleDropdown} className="cursor-pointer">
-        <Image src={OptionMenuIcon} alt="옵션 메뉴" width={40} height={40} />
-      </div>
+      <button type="button" onClick={toggleDropdown} className="relative size-5 cursor-pointer md:size-7">
+        <Image src={OptionMenuIcon} alt="옵션 메뉴" fill priority />
+      </button>
 
       {isDropdownOpen && (
         <div className="absolute right-0 z-10 cursor-pointer rounded-md border border-gray-200 bg-white shadow-md">

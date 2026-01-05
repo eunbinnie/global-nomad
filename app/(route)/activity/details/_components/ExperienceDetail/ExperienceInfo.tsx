@@ -26,7 +26,7 @@ export default function ExperienceInfo({ experience, averageRating, totalReviews
   return (
     <div className="px-[16px] mobile:px-0">
       <div className="mb-[10px] text-md text-nomad-black">{experience.category}</div>
-      <div className="mb-[10px] flex items-center justify-between">
+      <div className="mb-[10px] flex justify-between">
         <h1 className="text-2xl font-bold mobile:text-[3xl]">{experience.title}</h1>
         <div className="relative">
           {currentUserId === experience.creatorId && (
