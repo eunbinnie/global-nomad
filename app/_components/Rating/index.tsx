@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-import { cn } from '@/_utils/classNames';
-
 import starSvg from 'public/assets/icons/star.svg';
 
 interface RatingProps {
