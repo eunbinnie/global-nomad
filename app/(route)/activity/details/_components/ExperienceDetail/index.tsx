@@ -18,7 +18,6 @@ import ExperienceInfo from './ExperienceInfo';
 import ImageSlider from './ImageSlider';
 import ReservationCard from './ReservationCard';
 import Reviews from './Reviews';
-import Calendar from '../Calendar';
 import NaverMap from '../NaverMap';
 
 import Location from 'public/assets/icons/Location.svg';
