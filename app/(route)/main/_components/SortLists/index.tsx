@@ -49,18 +49,15 @@ export default function SortLists({ onSelect }: SortListsProps) {
     <div className="relative z-10">
       {showList && <div onClick={closeSelectBox} className="absolute left-0 top-0 size-full" />}
       <div className="whitespace-nowrap">
-        <fieldset
-          onClick={showList ? closeSelectBox : openSelectBox}
-          className="max-w-[120px] cursor-pointer rounded-[15px] border border-nomad-black mobile:w-full"
-        >
-          <div className="mx-[20px] flex h-[41px] items-center justify-center mobile:mx-[30px] mobile:h-[58px]">
-            <div className="text-md font-medium text-nomad-black mobile:text-2lg">{inputLabel}</div>
-            <Image src={CostBtn} alt="더보기" className={`duration-500 ${fade ? 'rotate-180' : 'rotate-0'}`} />
+        <fieldset onClick={showList ? closeSelectBox : openSelectBox} className="cursor-pointer rounded-lg border border-nomad-black mobile:w-full">
+          <div className="mx-[20px] my-1 flex items-center justify-center gap-2 mobile:mx-3 mobile:my-2">
+            <div className="text-md font-medium text-nomad-black mobile:text-base">{inputLabel}</div>
+            <Image src={CostBtn} alt="더보기" className={`size-4 duration-500 mobile:size-5 ${fade ? 'rotate-180' : 'rotate-0'}`} />
           </div>
         </fieldset>
         {showList && (
           <ul
-            className={`absolute z-10 mt-2 grid w-full gap-[2px] rounded-md bg-white opacity-100 shadow-medium ${fade ? 'animate-fade-in' : 'animate-fade-out'}`}
+            className={`absolute right-0 z-10 mt-2 grid w-full gap-[2px] rounded-lg bg-white p-1 opacity-100 shadow-medium ${fade ? 'animate-fade-in' : 'animate-fade-out'}`}
           >
             {selectOptions?.map((option, i) => (
               <li
@@ -68,9 +65,9 @@ export default function SortLists({ onSelect }: SortListsProps) {
                 onClick={() => {
                   handleClickListItem(option.value, option.label);
                 }}
-                className={`flex h-[41px] cursor-pointer items-center justify-center gap-2 rounded-md mobile:h-[58px] ${option.label === inputLabel ? 'bg-nomad-black' : 'hover:bg-green-100'}`}
+                className={`flex cursor-pointer items-center justify-center gap-2 rounded-lg p-1 ${option.label === inputLabel ? 'bg-nomad-black' : 'hover:bg-green-100'}`}
               >
-                <span className={`text-lg font-medium mobile:text-2lg ${option.label === inputLabel ? 'text-white' : 'text-black'}`}>{option.label}</span>
+                <span className={`text-sm mobile:text-md ${option.label === inputLabel ? 'text-white' : 'text-black'}`}>{option.label}</span>
               </li>
             ))}
           </ul>

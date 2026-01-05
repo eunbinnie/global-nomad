@@ -53,29 +53,28 @@ export default function CategoryLists({ onCategoryClick, onFilterSelect, selecte
   );
 
   return (
-    <div className='flex flex-col gap-0 mobile:gap-2'>
-      <div className="flex h-[41px] justify-between mobile:h-[58px]">
-        <div
-          ref={scrollRef}
-          className="scrollbar-hide flex gap-[10px] overflow-x-scroll text-lg font-medium mobile:gap-[14px] mobile:text-2lg tablet:gap-[20px]"
-        >
+    <div className="flex flex-col gap-0 mobile:gap-2">
+      <div className="flex items-center justify-between">
+        <div ref={scrollRef} className="scrollbar-hide flex gap-2 overflow-x-scroll text-lg font-medium mobile:gap-3">
           {categories.map((category) => (
             <button
               key={category}
               type="button"
-              className={`category-button min-w-[100px] rounded-[15px] border border-nomad-black mobile:min-w-[120px] tablet:min-w-[127px] ${selectedCategories === category ? 'bg-nomad-black text-white' : 'bg-white text-green-200'}`}
+              className={`category-button whitespace-nowrap rounded-lg border border-nomad-black px-2 py-1 text-md mobile:py-2 mobile:text-base ${selectedCategories === category ? 'bg-nomad-black text-white' : 'bg-white text-green-200'}`}
               onClick={() => onCategoryListClick(category)}
             >
               {categoryMap[category]}
             </button>
           ))}
         </div>
-        <SortLists onSelect={onFilterSelect} />
-        {isScrollable && !isEnd && (
-          <div className="pointer-events-none absolute h-[41px] w-full bg-btnGradientMobile mobile:h-[58px] mobile:bg-btnGradientTablet" />
-        )}
+        <div className="relative">
+          <SortLists onSelect={onFilterSelect} />
+          {isScrollable && !isEnd && (
+            <div className="pointer-events-none absolute -left-full top-0 size-full bg-btnGradientMobile mobile:bg-btnGradientTablet" />
+          )}
+        </div>
       </div>
-      <div className="mt-[25px] flex gap-2 text-2xl font-bold mobile:text-[36px] mobile:leading-[43px]">
+      <div className="mt-[25px] flex gap-2 text-xl font-bold mobile:text-3xl">
         {emojis[selectedCategory]} <span>{selectedCategory}</span>
       </div>
     </div>
