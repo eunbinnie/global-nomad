@@ -97,8 +97,7 @@ function AccountConfirm() {
                 sizes="max-width:100%"
                 alt={`${data?.nickname} 프로필 이미지`}
                 onError={() => setImagePath(DefaultProfile)}
-                style={{ objectFit: 'cover' }}
-                className="rounded-full"
+                className="rounded-full object-cover"
               />
             </div>
             <div className="flex-1">

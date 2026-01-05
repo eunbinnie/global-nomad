@@ -35,10 +35,9 @@ export default function ReviewCardFrame({ activityId, title, bannerImageUrl, dat
               src={bannerImageUrl}
               fill
               alt={`${title} 사진`}
-              style={{ objectFit: 'cover' }}
               sizes="max-width:100%"
               priority
-              className="aspect-square transition-transform duration-300 ease-in-out hover:scale-110"
+              className="aspect-square object-cover transition-transform duration-300 ease-in-out hover:scale-110"
             />
           </Link>
         </div>

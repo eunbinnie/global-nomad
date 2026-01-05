@@ -43,7 +43,7 @@ export default function UserHeader() {
       </div>
       <div className="ml-3 flex items-center justify-between gap-[10px] md:ml-[25px]" onClick={toggleDropdown} ref={dropdownRef}>
         <div className="relative size-8 cursor-pointer overflow-hidden rounded-full">
-          <Image src={userProfileImgUrl || defaultProfileImg} alt="profile image" fill sizes="max-width:100%" priority style={{ objectFit: 'cover' }} />
+          <Image src={userProfileImgUrl || defaultProfileImg} alt="profile image" fill sizes="max-width:100%" priority className="object-cover" />
         </div>
         <div className="relative flex items-center gap-1">
           <div className="cursor-pointer">{userNickname}</div>
