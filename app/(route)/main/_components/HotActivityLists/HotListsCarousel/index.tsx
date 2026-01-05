@@ -46,8 +46,8 @@ export default function HotListsCarousel() {
 
   return (
     <div className="embla relative w-full overflow-hidden">
-      <div className="mb-1 flex items-center justify-between mobile:mb-5">
-        <div className="text-2xl mobile:text-[36px] mobile:leading-[43px]">🔥 인기 체험</div>
+      <div className="mb-3 flex items-center justify-between mobile:mb-5">
+        <div className="text-xl mobile:text-3xl">🔥 인기 체험</div>
         <div className="flex items-center">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
@@ -61,22 +61,22 @@ export default function HotListsCarousel() {
               className="embla__slide group relative aspect-square min-w-0 shrink-0 grow-0 basis-[186px] cursor-pointer mobile:basis-[384px]"
               key={i}
             >
-              <div className="h-full transform rounded-3xl transition-transform duration-300 hover:translate-y-[-10px] group-hover:shadow-lg group-hover:shadow-gray-400">
+              <div className="relative h-full transform overflow-hidden rounded-2xl transition-transform duration-300 hover:translate-y-[-10px] group-hover:shadow-lg group-hover:shadow-gray-400 mobile:rounded-3xl">
                 <div
                   className="absolute bottom-0 z-[1] h-3/5 w-[186px] rounded-[24px] mobile:w-[368px]"
                   style={{ background: 'linear-gradient(to top, rgba(30,30,30,0.8), transparent)' }}
                 />
-                <div className="absolute bottom-6 left-6 z-[1] flex flex-col gap-0 text-white mobile:gap-5">
+                <div className="absolute bottom-3 left-3 z-[1] flex flex-col gap-2 text-white mobile:bottom-6 mobile:left-6 mobile:gap-3">
                   <Rating rating={activity.rating} reviewCount={activity.reviewCount} ratingTarget="hot" />
-                  <div className="mr-[20px] max-h-[80px] break-keep text-lg mobile:max-h-[130px] mobile:text-[28px] mobile:leading-[42px]">
-                    {activity.title}
-                  </div>
-                  <div className="text-md mobile:text-2lg">
-                    ₩ {activity.price.toLocaleString()}
-                    <span className="text-md font-regular"> /인</span>
+                  <div className="grid mobile:gap-2">
+                    <div className="mr-[20px] line-clamp-2 text-ellipsis break-keep text-lg mobile:text-2xl">{activity.title}</div>
+                    <div className="text-md font-medium mobile:text-2lg">
+                      ₩ {activity.price.toLocaleString()}
+                      <span className="text-sm font-regular"> / 인</span>
+                    </div>
                   </div>
                 </div>
-                <Image src={activity.bannerImageUrl} alt={activity.title} priority fill sizes="max-width:100%" className="rounded-3xl object-cover" />
+                <Image src={activity.bannerImageUrl} alt={activity.title} priority fill sizes="max-width:100%" className="object-cover" />
               </div>
             </div>
           ))}

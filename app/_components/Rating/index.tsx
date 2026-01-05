@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { cn } from '@/_utils/classNames';
+
 import starSvg from 'public/assets/icons/star.svg';
 
 interface RatingProps {
@@ -20,14 +22,14 @@ type RatingTargetType = 'hot' | 'all' | 'detail' | 'manage';
 export default function Rating({ rating, reviewCount, ratingTarget = 'manage' }: RatingProps) {
   const ratingClassMapper: Record<RatingTargetType, string> = {
     all: 'flex items-center gap-0.5 text-lg font-medium text-black',
-    hot: 'text-md font-semibold text-white',
+    hot: 'text-md font-normal text-white',
     detail: 'text-md font-regular',
     manage: 'text-base',
   };
 
   return (
     <div className="flex items-center gap-[5px]">
-      <Image src={starSvg} className="size-[20px] mobile:size-[18px]" alt="rating" />
+      <Image src={starSvg} className="size-4 mobile:size-5" alt="rating" />
       <div className={`${ratingClassMapper[ratingTarget]}`}>
         {rating.toFixed(1)}
         <span className={`${ratingTarget === 'all' ? 'text-gray-500' : ''}`}> ({reviewCount})</span>
