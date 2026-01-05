@@ -17,7 +17,7 @@ interface ImagePreviewProps {
 function ImagePreview({ imageSrc, onClick }: ImagePreviewProps) {
   return (
     <div className="relative aspect-square rounded-xl">
-      <Image fill sizes="max-width:100%" src={imageSrc} alt="이미지 미리보기" priority style={{ objectFit: 'cover', borderRadius: '12px' }} />
+      <Image fill sizes="max-width:100%" src={imageSrc} alt="이미지 미리보기" priority className="rounded-xl object-cover" />
       <button type="button" onClick={onClick} className="absolute -right-2 -top-2 size-6 pc:-right-5 pc:-top-5 pc:size-10">
         <Image src={DeleteIcon} alt="삭제" />
       </button>

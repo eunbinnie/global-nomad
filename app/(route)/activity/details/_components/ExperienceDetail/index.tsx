@@ -16,8 +16,8 @@ import Modal from '@/_components/Modal';
 
 import ExperienceInfo from './ExperienceInfo';
 import ImageSlider from './ImageSlider';
+import ReservationCard from './ReservationCard';
 import Reviews from './Reviews';
-import Calendar from '../Calendar';
 import NaverMap from '../NaverMap';
 
 import Location from 'public/assets/icons/Location.svg';
@@ -189,24 +189,7 @@ export default function ExperienceDetail({ experience, totalReviews, averageRati
             <Reviews averageRating={averageRating} totalReviews={totalReviews} getSatisfactionLabel={getSatisfactionLabel} activityId={experience.id} />
           </div>
 
-          <div className="relative">
-            {/* 본인이 만든 체험인 경우 예약 카드가 보이지 않도록 처리 */}
-            {experience.userId !== currentUserId && (
-              <div className="fixed inset-x-0 bottom-20 z-[999] flex justify-center mobile:hidden">
-                <div className="w-full bg-white shadow-md">
-                  <Calendar activityId={experience.id} />
-                </div>
-              </div>
-            )}
-
-            {experience.userId !== currentUserId && (
-              <div className="hidden w-full pr-[24px] mobile:block tablet:pr-0">
-                <div className="w-full rounded-lg bg-white shadow-md">
-                  <Calendar activityId={experience.id} />
-                </div>
-              </div>
-            )}
-          </div>
+          <ReservationCard currentUserId={currentUserId} experienceId={experience.id} experienceUserId={experience.userId} />
         </div>
       </div>
     </div>

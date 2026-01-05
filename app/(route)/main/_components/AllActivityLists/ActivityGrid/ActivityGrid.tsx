@@ -50,8 +50,7 @@ export default function ActivityGrid({ activities, isLoading, isError, onClick }
               fill
               priority
               sizes="max-width:100%"
-              style={{ objectFit: 'cover' }}
-              className="transition-transform duration-300 ease-in-out hover:scale-110"
+              className="object-cover transition-transform duration-300 ease-in-out hover:scale-110"
             />
           </div>
           <div className="text-balance">

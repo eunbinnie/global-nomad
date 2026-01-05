@@ -42,8 +42,12 @@ export default function AlarmList() {
   return (
     <div className="relative flex flex-row justify-center">
       <button type="button" aria-label="alarm-list-btn" className="flex cursor-pointer" onClick={toggleDropdown}>
-        <Image src={alarm} alt="alarm" />
-        {myNotifications && myNotifications.totalCount > 0 && <Image src="/assets/icons/alarmList/alarm-dot.svg" alt="dot" width={5} height={5} />}
+        <Image src={alarm} alt="alarm" width={16} height={18} />
+        {myNotifications && myNotifications.totalCount > 0 && (
+          <div className="relative aspect-square size-[5px]">
+            <Image src="/assets/icons/alarmList/alarm-dot.svg" alt="dot" fill />
+          </div>
+        )}
       </button>
       {showList &&
         myNotifications &&
@@ -58,7 +62,9 @@ export default function AlarmList() {
 
 function ListFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="absolute mt-10 flex w-[328px] flex-col justify-center gap-4 rounded-[10px] border border-gray-300 bg-green-100 px-5 py-6">{children}</div>
+    <div className="absolute mt-10 flex w-[328px] flex-col justify-center gap-3 rounded-[10px] border border-gray-300 bg-green-100 px-5 pb-8 pt-4">
+      {children}
+    </div>
   );
 }
 
@@ -81,10 +87,10 @@ function List({ onClose, listItems, onDelete }: ListProps) {
   });
   return (
     <ListFrame>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <h3>{`알림 ${sortedListItems.length}개`}</h3>
-        <button type="button" onClick={onClose}>
-          <Image src="/assets/icons/close.svg" alt="close-btn" width={24} height={24} />
+        <button type="button" onClick={onClose} className="relative aspect-square size-6">
+          <Image src="/assets/icons/close.svg" alt="close-btn" fill priority />
         </button>
       </div>
       <div className="flex max-h-[400px] flex-col gap-2 overflow-y-scroll pr-1">
@@ -105,13 +111,14 @@ function EmptyList({ onClose }: { onClose: () => void }) {
           onClick={() => {
             onClose();
           }}
+          className="relative aspect-square size-6"
         >
-          <Image src="/assets/icons/close.svg" alt="close-btn" width={24} height={24} />
+          <Image src="/assets/icons/close.svg" alt="close-btn" fill priority />
         </button>
       </div>
       <div className="flex flex-col items-center justify-center gap-3">
         <Image src="/assets/icons/alarmList/message-dashed.svg" alt="alarm-empty" width={24} height={24} className="w-fit" />
-        <div className="mt-6 w-fit text-base">알림함이 비었습니다.</div>
+        <div className="w-fit text-base">알림함이 비었습니다.</div>
       </div>
     </ListFrame>
   );
@@ -188,11 +195,11 @@ function ListContent({ extractedContent, notificationId, onDelete }: ListContent
   const typeDot = (contentType: ListContentType) => {
     switch (contentType) {
       case ListContentType.CONFIRMED:
-        return <Image src="/assets/icons/alarmList/alarm-dot-confirmed.svg" alt="alarm-dot-confirmed" width={5} height={5} />;
+        return <Image src="/assets/icons/alarmList/alarm-dot-confirmed.svg" alt="alarm-dot-confirmed" fill priority />;
       case ListContentType.DECLINED:
-        return <Image src="/assets/icons/alarmList/alarm-dot-declined.svg" alt="alarm-dot-declined" width={5} height={5} />;
+        return <Image src="/assets/icons/alarmList/alarm-dot-declined.svg" alt="alarm-dot-declined" fill priority />;
       case ListContentType.NEW:
-        return <Image src="/assets/icons/alarmList/alarm-dot-new.svg" alt="alarm-dot-new" width={5} height={5} />;
+        return <Image src="/assets/icons/alarmList/alarm-dot-new.svg" alt="alarm-dot-new" fill priority />;
       default:
         return null;
     }
@@ -211,16 +218,16 @@ function ListContent({ extractedContent, notificationId, onDelete }: ListContent
   return (
     <div>
       <div className="flex h-6 justify-between">
-        {typeDot(type)}
+        <div className="relative aspect-square size-[5px]">{typeDot(type)}</div>
         <button
           type="button"
-          className="text-gray-500 hover:text-gray-700"
+          className="relative aspect-square size-4"
           onClick={(e) => {
             e.stopPropagation();
             onDelete(notificationId);
           }}
         >
-          X
+          <Image src="/assets/icons/close.svg" alt="삭제" fill priority />
         </button>
       </div>
       <Link href={`/activity/details/${notificationId - 57}`} target="_blank">

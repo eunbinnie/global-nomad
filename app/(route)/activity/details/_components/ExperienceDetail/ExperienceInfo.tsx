@@ -26,7 +26,7 @@ export default function ExperienceInfo({ experience, averageRating, totalReviews
   return (
     <div className="px-[16px] mobile:px-0">
       <div className="mb-[10px] text-md text-nomad-black">{experience.category}</div>
-      <div className="mb-[10px] flex items-center justify-between">
+      <div className="mb-[10px] flex justify-between">
         <h1 className="text-2xl font-bold mobile:text-[3xl]">{experience.title}</h1>
         <div className="relative">
           {currentUserId === experience.creatorId && (
@@ -41,8 +41,10 @@ export default function ExperienceInfo({ experience, averageRating, totalReviews
         <span className="text-md text-nomad-black">
           <Rating rating={averageRating} reviewCount={totalReviews} ratingTarget="detail" />
         </span>
-        <span className="flex gap-[2px]">
-          <Image src={Location} alt="Location" width={16} height={16} />
+        <span className="flex items-center gap-[2px]">
+          <div className="relative aspect-[2/3] h-[18px] w-4">
+            <Image src={Location} alt="Location" fill />
+          </div>
           <span className="text-md text-nomad-black">{experience.address}</span>
         </span>
       </div>
