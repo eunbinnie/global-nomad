@@ -82,7 +82,7 @@ export default function AllActivityLists({ searchValue }: AllActivityListsProps)
       ) : (
         <CategoryLists onCategoryClick={handleCategoryClick} onFilterSelect={handleFilterSelect} selectedCategories={selectedCategories} />
       )}
-      {isNoData && <div className="flex h-[400px] w-full items-center justify-center text-xl font-bold mobile:h-[600px] mobile:text-3xl">{searchMessage}</div>}
+      {/* {isNoData && <div className="flex h-[400px] w-full items-center justify-center text-xl font-bold mobile:h-[600px] mobile:text-3xl">{searchMessage}</div>}
       <ActivityGrid isLoading={isLoading} isError={isError} activities={activities} onClick={(id: string) => router.push(`/activity/details/${id}`)} />
       {data && data.totalCount !== 0 && (
         <div className="flex justify-center">
@@ -95,7 +95,7 @@ export default function AllActivityLists({ searchValue }: AllActivityListsProps)
             goToPreviousSet={goToPreviousSet}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
