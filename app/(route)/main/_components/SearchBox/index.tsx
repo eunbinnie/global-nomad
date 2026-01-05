@@ -29,7 +29,7 @@ export default function SearchBox({ onSearch }: HotActivitySearchProps) {
 
   return (
     <div className="relative bottom-[50px] z-10 w-full max-w-[1200px] mobile:bottom-[60px]">
-      <div className="mx-[24px] flex flex-col gap-[15px] rounded-[16px] bg-white px-[24px] py-[16px] text-lg font-bold drop-shadow-xl mobile:gap-[32px] mobile:py-[32px]">
+      <div className="mx-4 flex flex-col gap-3 rounded-2xl bg-white p-4 text-lg font-bold drop-shadow-xl mobile:gap-8 mobile:px-6 mobile:py-8">
         <span className="mobile:text-xl">무엇을 체험하고 싶으신가요?</span>
         <form className="flex h-[56px] items-center justify-between gap-[12px]" onSubmit={handleSubmit}>
           <input
@@ -40,7 +40,7 @@ export default function SearchBox({ onSearch }: HotActivitySearchProps) {
           />
           <Image src={Bed} alt="bed" width={48} height={48} className="absolute" />
           <button type="submit" className="h-full w-[96px] rounded-[4px] bg-nomad-black text-white mobile:min-w-[136px]">
-            검색하기
+            검색
           </button>
         </form>
       </div>

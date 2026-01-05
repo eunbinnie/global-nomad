@@ -21,7 +21,6 @@ const calendarNum = new Date().getMonth() + 1;
 /**
  * Main Banner Carousel 컴포넌트 입니다.
  */
-
 export default function Carousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 }, [Fade(), Autoplay({ delay: 3000 })]);
 
@@ -83,7 +82,7 @@ export default function Carousel() {
               />
               <div className="relative z-20 mx-auto flex size-full max-w-[1100px] flex-col items-center justify-center break-keep px-6 text-xl font-bold text-white mobile:text-[40px] mobile:leading-[60px] tablet:text-5xl tablet:leading-[60px]">
                 <span className="mb-2 w-full text-left leading-7 mobile:mb-5 mobile:leading-[50px] tablet:leading-[60px]">{activity.title}</span>
-                <span className="w-full text-left text-sm font-medium mobile:text-xl tablet:text-2xl">{`${calendarNum}월의 인기 경험 BEST 🔥`}</span>
+                <span className="w-full text-left text-sm font-medium mobile:text-xl tablet:text-2xl">{`${calendarNum}월의 인기 체험 BEST 3 🔥`}</span>
               </div>
               <div className="absolute top-0 z-10 size-full bg-bannerGradient" />
             </div>
