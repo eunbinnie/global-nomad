@@ -168,7 +168,7 @@ export default function ExperienceDetail({ experience, totalReviews, averageRati
           />
         </div>
 
-        <div className="flex tablet:gap-[26px] tablet:px-[24px]">
+        <div className="mb-10 flex tablet:gap-[26px] tablet:px-[24px]">
           <div className="min-w-0 flex-1 px-0">
             <section
               className="border-t py-[16px] pl-[24px] pr-[14px] tablet:px-0"
