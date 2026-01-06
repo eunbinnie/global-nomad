@@ -24,7 +24,7 @@ function ReservationCard({ experienceUserId, currentUserId, experienceId }: Rese
         )}
       </div>
       {/* pc */}
-      <div className="relative hidden w-full pr-[24px] mobile:block tablet:pr-0">
+      <div className="sticky top-[78px] hidden w-full pr-[24px] mobile:block tablet:pr-0">
         <div className="w-full rounded-lg bg-white shadow-md">
           <Calendar activityId={experienceId} />
         </div>
