@@ -40,11 +40,11 @@ export default function AlarmList() {
   };
 
   return (
-    <div className="relative flex flex-row justify-center">
-      <button type="button" aria-label="alarm-list-btn" className="flex cursor-pointer" onClick={toggleDropdown}>
-        <Image src={alarm} alt="alarm" width={16} height={18} />
+    <div className="relative flex cursor-pointer flex-row justify-center">
+      <button type="button" aria-label="alarm-list-btn" className="relative flex size-[14px] cursor-pointer mobile:size-4" onClick={toggleDropdown}>
+        <Image src={alarm} alt="alarm" fill priority />
         {myNotifications && myNotifications.totalCount > 0 && (
-          <div className="relative aspect-square size-[5px]">
+          <div className="absolute right-0 top-0 aspect-square size-1">
             <Image src="/assets/icons/alarmList/alarm-dot.svg" alt="dot" fill />
           </div>
         )}
@@ -117,7 +117,7 @@ function EmptyList({ onClose }: { onClose: () => void }) {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center gap-3">
-        <Image src="/assets/icons/alarmList/message-dashed.svg" alt="alarm-empty" width={24} height={24} className="w-fit" />
+        <Image src="/assets/icons/alarmList/message-dashed.svg" alt="alarm-empty" width={24} height={24} priority className="w-fit" />
         <div className="w-fit text-base">알림함이 비었습니다.</div>
       </div>
     </ListFrame>

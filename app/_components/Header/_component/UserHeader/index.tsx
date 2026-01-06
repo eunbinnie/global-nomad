@@ -2,7 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 import { useEffect, useRef, useState } from 'react';
+import { MapPin } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import useBackgroundClick from '@/_hooks/useBackgroundClick';
 
@@ -37,20 +39,25 @@ export default function UserHeader() {
   });
 
   return (
-    <div className="flex items-center">
-      <div className="cursor-pointer border-r border-gray-200 pr-3 md:pr-[25px]">
+    <div className="flex items-center gap-2 mobile:gap-3">
+      <Link href="/main" className="flex items-center gap-1">
+        <MapPin className="size-[14px] mobile:size-4" />
+        <span className="text-sm mobile:text-md">체험</span>
+      </Link>
+      <div className="h-3 w-px bg-gray-150" />
+      <div className="flex items-center gap-2 mobile:gap-3">
         <AlarmList />
-      </div>
-      <div className="ml-3 flex items-center justify-between gap-[10px] md:ml-[25px]" onClick={toggleDropdown} ref={dropdownRef}>
-        <div className="relative size-8 cursor-pointer overflow-hidden rounded-full">
-          <Image src={userProfileImgUrl || defaultProfileImg} alt="profile image" fill sizes="max-width:100%" priority className="object-cover" />
-        </div>
-        <div className="relative flex items-center gap-1">
-          <div className="cursor-pointer">{userNickname}</div>
-          <div className="size-4 cursor-pointer">
-            <Image src={ArrowDown} alt="dropdown arrow" className={`duration-500 ${showList ? 'rotate-180' : 'rotate-0'}`} />
+        <div className="flex items-center justify-between gap-[6px]" onClick={toggleDropdown} ref={dropdownRef}>
+          <div className="relative size-4 cursor-pointer overflow-hidden rounded-full mobile:size-5">
+            <Image src={userProfileImgUrl || defaultProfileImg} alt="profile image" fill sizes="max-width:100%" priority className="object-cover" />
           </div>
-          {showList && <HeaderDropdown />}
+          <div className="relative flex items-center gap-[2px]">
+            <div className="cursor-pointer text-sm mobile:text-md">{userNickname}</div>
+            <div className="size-3 cursor-pointer">
+              <Image src={ArrowDown} alt="dropdown arrow" className={`duration-500 ${showList ? 'rotate-180' : 'rotate-0'}`} />
+            </div>
+            {showList && <HeaderDropdown />}
+          </div>
         </div>
       </div>
     </div>
