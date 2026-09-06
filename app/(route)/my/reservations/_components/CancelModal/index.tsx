@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Lottie from 'react-lottie-player';
 
 import { cn } from '@/_utils/classNames';
 
 import Button from '@/_components/Button';
+import Lottie from '@/_components/LottiePlayer';
 import Modal from '@/_components/Modal';
 
 import CheckBlack from 'public/assets/lottie/check-black.json';

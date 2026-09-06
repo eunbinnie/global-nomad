@@ -1,8 +1,8 @@
 'use client';
 
-import Lottie from 'react-lottie-player';
-
 import type { SubImage } from '@/_types/activities/form.types';
+
+import Lottie from '@/_components/LottiePlayer';
 
 import ImagePreview from '../ImagePreview';
 import UploadBox from '../UploadBox';

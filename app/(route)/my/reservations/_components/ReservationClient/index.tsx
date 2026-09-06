@@ -1,7 +1,6 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import Lottie from 'react-lottie-player';
 import { AxiosError } from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 import getReservations from '@/_apis/reservations/getReservations';
@@ -10,6 +9,8 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import type { ReservationParams, ReservationStatus } from '@/_types/myReservations';
 
 import { useIntersectionObserver } from '@/_hooks/activities/useIntersectionObserver';
+
+import Lottie from '@/_components/LottiePlayer';
 
 import FilterDropdown from '../FilterDropdown';
 import ReservationContainer from '../ReservationContainer';

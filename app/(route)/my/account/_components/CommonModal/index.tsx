@@ -1,6 +1,5 @@
-import Lottie from 'react-lottie-player';
-
 import Button from '@/_components/Button';
+import Lottie from '@/_components/LottiePlayer';
 import Modal from '@/_components/Modal';
 
 import Loading from 'public/assets/lottie/loading.json';

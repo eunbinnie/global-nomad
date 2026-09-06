@@ -1,10 +1,10 @@
 'use client';
 
 import type { Dispatch, SetStateAction } from 'react';
-import Lottie from 'react-lottie-player';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Button from '@/_components/Button';
+import Lottie from '@/_components/LottiePlayer';
 
 import checkAnimation from 'public/assets/lottie/check-black.json';
 
