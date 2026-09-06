@@ -22,11 +22,11 @@ export async function GET(request: Request) {
 
   try {
     // 네이버 Geocode API로 요청
-    const response = await axios.get<NaverGeocodeResponse>('https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode', {
+    const response = await axios.get<NaverGeocodeResponse>('https://maps.apigw.ntruss.com/map-geocode/v2/geocode', {
       params: { query: address },
       headers: {
-        'X-NCP-APIGW-API-KEY-ID': process.env.NEXT_PUBLIC_NAVER_CLIENT_ID as string,
-        'X-NCP-APIGW-API-KEY': process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET as string,
+        'x-ncp-apigw-api-key-id': process.env.NEXT_PUBLIC_NAVER_CLIENT_ID as string,
+        'x-ncp-apigw-api-key': process.env.NAVER_CLIENT_SECRET as string,
       },
     });
 

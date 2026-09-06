@@ -1,5 +1,6 @@
-import Lottie from 'react-lottie-player';
 import { motion } from 'framer-motion';
+
+import Lottie from '@/_components/LottiePlayer';
 
 import EmptyAnimation from 'public/assets/lottie/empty-lottie.json';
 
